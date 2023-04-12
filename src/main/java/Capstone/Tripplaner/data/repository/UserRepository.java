@@ -1,8 +1,11 @@
 package Capstone.Tripplaner.data.repository;
 
 import Capstone.Tripplaner.data.entity.PostEntity;
+import Capstone.Tripplaner.data.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<PostEntity, String> {
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity, String> {
 
 }
