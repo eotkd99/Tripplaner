@@ -17,7 +17,7 @@
             <button class="btn btn-primary float-end"
                     onclick="location.href='addForm.html'"
                     th:onclick="|location.href='@{/post/add}'|"
-                    type="button" >상품 등록</button>
+                    type="button" >게시글 등록</button>
         </div>
     </div>
 
@@ -34,6 +34,9 @@
                 <th>작성일</th>
             </tr>
             </thead>
+            <div th:if="${popupMessage}" class="popup">
+                <p th:text="${popupMessage}"></p>
+            </div>
             <tbody>
             <tr th:each="post : ${postList}">
                 <td th:text="${post.getId()}"></td>

@@ -46,7 +46,6 @@ public class PostController {
     public String postEditSave(@Validated @ModelAttribute Post post, BindingResult bindingResult,  @PathVariable Integer id) {
 
         if (bindingResult.hasErrors()) {
-            log.info("errors={}", bindingResult);
             return "post/editForm";
         }
 

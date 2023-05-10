@@ -22,7 +22,8 @@ public class UserService {
         UserEntity userEntity = userRepository.findById(id)
                 .filter(m -> m.getPassword().equals(password))
                 .orElse(null);
-        return modelMapper.map(userEntity, User.class);
+        if(userEntity==null) return null;
+        else return modelMapper.map(userEntity, User.class);
     }
 
     public void saveUser(User user) {
