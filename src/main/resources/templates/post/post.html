@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2>게시글 상세</h2>
+    </div>
+
+    <!-- 추가 -->
+    <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+
+    <div>
+        <label for="0">NO.</label>
+        <input type="text" id="0"  class="form-control"  th:value="${post.getId()}" readonly>
+    </div>
+    <div>
+        <label for="1">제목</label>
+        <input type="text" id="1"  class="form-control"  th:value="${post.getTitle()}" readonly>
+    </div>
+    <div>
+        <label for="2">내용</label>
+        <input type="text" id="2"  class="form-control"  th:value="${post.getContent()}" readonly>
+    </div>
+    <div>
+        <label for="3">좋아요</label>
+        <input type="text" id="3"  class="form-control"  th:value="${post.getLikes()}" readonly>
+    </div>
+    <div>
+        <label for="4">조회수</label>
+        <input type="text" id="4"  class="form-control"th:value="${post.getViews()}" readonly>
+    </div>
+    <div>
+        <label for="5">일자</label>
+        <input type="text" id="5"  class="form-control" th:value="${post.getCreated()}" readonly>
+    </div>
+    <div>
+        <label for="6">작성자</label>
+        <input type="text" id="6"  class="form-control"  th:value="${post.getId()}" readonly>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    onclick="location.href='editForm.html'"
+                    th:onclick="|location.href='@{/post/{postID}/edit(postID=${post.id})}'|"
+                    type="button">게시글 수정</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='items.html'"
+                    th:onclick="|location.href='@{/postList}'|"
+                    type="button">목록으로</button>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+</body>
+</html>

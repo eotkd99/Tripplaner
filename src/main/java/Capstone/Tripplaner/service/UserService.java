@@ -1,38 +1,40 @@
 package Capstone.Tripplaner.service;
 
-import Capstone.Tripplaner.Mapper;
-import Capstone.Tripplaner.data.dto.UserDto;
-import Capstone.Tripplaner.data.entity.PostEntity;
+import Capstone.Tripplaner.data.dto.User;
 import Capstone.Tripplaner.data.entity.UserEntity;
 import Capstone.Tripplaner.data.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-
-import java.util.Optional;
 
 @Service
+@Slf4j
 public class UserService {
-    UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserService(UserRepository UserRepository, ModelMapper modelMapper) {
+        this.userRepository = UserRepository;
+        this.modelMapper = modelMapper;
     }
 
-    public boolean login(UserDto userDto){
-
-        UserDto dto = Mapper.UserMapper(userRepository.findById(userDto.getId()));
-
-        if (dto.getId() != null && dto.getPassword().equals(dto.getPassword())) {
-            return true;
-        }
-        return false;
+    public User login(String id, String password) {
+        UserEntity userEntity = userRepository.findById(id)
+                .filter(m -> m.getPassword().equals(password))
+                .orElse(null);
+        return modelMapper.map(userEntity, User.class);
     }
-    public boolean register(UserDto userDto){
 
-        UserDto dto = Mapper.UserMapper(userRepository.findById(userDto.getId()));
-
-        if (dto.getId() == null) {
-        }
-        return false;
+    public void saveUser(User user) {
+        userRepository.save(modelMapper.map(user, UserEntity.class));
     }
+
+    public void updateUser(User user) {
+        userRepository.save(modelMapper.map(user, UserEntity.class));
+    }
+
+    public void deleteUser(String id) {
+        userRepository.deleteById(id);
+    }
+
 }

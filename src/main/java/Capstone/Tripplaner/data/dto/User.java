@@ -1,16 +1,15 @@
 package Capstone.Tripplaner.data.dto;
 
-import lombok.Data;
-
 import lombok.*;
 
-@Getter
-@Setter
+import javax.validation.constraints.NotEmpty;
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class UserDto {
+public class User {
+    @NotEmpty
     private String id;
-    private String username;
+    @NotEmpty
     private String password;
 }

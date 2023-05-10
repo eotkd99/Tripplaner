@@ -1,20 +1,23 @@
 package Capstone.Tripplaner.data.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class PostDto {
-    private String id;
+public class Post {
+    private Integer id;
+    @NotBlank
     private String title;
+    @NotBlank
     private String content;
-    private String author;
     private LocalDateTime created;
+    private String userID;
     private Integer likes;
     private Integer views;
 }

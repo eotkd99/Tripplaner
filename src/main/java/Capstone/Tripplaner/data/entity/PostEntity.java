@@ -16,7 +16,7 @@ public class PostEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     @Column(name = "title")
     private String title;
@@ -27,9 +27,12 @@ public class PostEntity {
     @Column(name = "created")
     private LocalDateTime created;
 
+    @Column(name = "userID")
+    private String userID;
+
     @Column(name = "likes")
-    private int likes;
+    private Integer likes;
 
     @Column(name = "views")
-    private int views;
+    private Integer views;
 }
