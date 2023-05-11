@@ -26,8 +26,10 @@ public class PostService {
     public Post getPostById(Integer id) {
         return postRepository.getPostById(id).map(e -> modelMapper.map(e, Post.class)).orElse(null);
     }
-    public void savePost(Post post) {
-        postRepository.save(modelMapper.map(post, PostEntity.class));
+
+    public Integer savePost(Post post) {
+        PostEntity save = postRepository.save(modelMapper.map(post, PostEntity.class));
+        return save.getId();
     }
 
     public void updatePost(Integer id, Post post) {

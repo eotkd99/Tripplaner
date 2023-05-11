@@ -7,12 +7,12 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Entity
 @Table(name = "posts")
-public class PostEntity {
+    public class PostEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +35,11 @@ public class PostEntity {
 
     @Column(name = "views")
     private Integer views;
+
+    @PrePersist
+    public void prePersist() {
+        this.created=LocalDateTime.now();
+        this.likes=0;
+        this.views=0;
+    }
 }

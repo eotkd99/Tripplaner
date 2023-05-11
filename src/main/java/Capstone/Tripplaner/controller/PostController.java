@@ -1,16 +1,16 @@
 package Capstone.Tripplaner.controller;
 
 import Capstone.Tripplaner.data.dto.Post;
+import Capstone.Tripplaner.data.dto.User;
+import Capstone.Tripplaner.data.dto.form.PostForm;
 import Capstone.Tripplaner.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -44,12 +44,30 @@ public class PostController {
 
     @PostMapping("/post/{id}/edit")
     public String postEditSave(@Validated @ModelAttribute Post post, BindingResult bindingResult,  @PathVariable Integer id) {
-
-        if (bindingResult.hasErrors()) {
-            return "post/editForm";
-        }
-
+        if (bindingResult.hasErrors()) return "post/editForm";
         postService.updatePost(id, post);
         return "redirect:/post/{id}";
+    }
+
+    @GetMapping("/post/add")
+    public String postAdd(Model model) {
+        model.addAttribute("post", new Post());
+        return "post/addForm";
+    }
+
+    @PostMapping("/post/add")
+    public String postAddShow(@Validated @ModelAttribute("post") PostForm form, BindingResult bindingResult,
+                              @SessionAttribute("user") User user, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "post/addForm";
+        }
+        Post post = new Post();
+        post.setTitle(form.getTitle());
+        post.setContent(form.getContent());
+        post.setUserID(user.getId());
+        Integer postId = postService.savePost(post);
+        redirectAttributes.addAttribute("postId", postId);
+        return "redirect:/post/{postId}";
     }
 }

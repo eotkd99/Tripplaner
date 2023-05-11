@@ -12,6 +12,9 @@
             border-color: #dc3545;
             color: #dc3545;
         }
+        .my-textarea {
+            height: 400px;
+        }
     </style>
 </head>
 <body>
@@ -33,30 +36,16 @@
             <input type="text" id="id" th:field="*{id}" class="form-control" readonly>
         </div>
         <div>
-            <label>Title</label>
+            <label>제목</label>
             <input type="text" id="title" th:field="*{title}" th:errorclass="field-error" class="form-control" placeholder="제목을 입력하세요">
             <div class="field-error" th:errors="*{title}">
             </div>
         </div>
         <div>
             <label>내용</label>
-            <input type="text" id="content" th:field="*{content}"
-                   th:errorclass="field-error" class="form-control" placeholder="내용을 입력하세요">
-            <div class="field-error" th:errors="*{content}">
-                내용 공백
-            </div>
-        </div>
-        <div>
-            <label>좋아요</label>
-            <input type="text" id="likes" th:field="*{likes}" class="form-control" readonly>
-        </div>
-        <div>
-            <label>조회수</label>
-            <input type="text" id="views" th:field="*{views}" class="form-control" readonly>
-        </div>
-        <div>
-            <label>작성일</label>
-            <input type="text" id="created" th:field="*{created}" class="form-control" readonly>
+            <textarea th:field="*{content}"
+                      th:errorclass="field-error" class="form-control" placeholder="내용을 입력하세요"></textarea>
+            <div class="field-error" th:errors="*{content}">내용 오류</div>
         </div>
         <div>
             <label>작성자</label>
@@ -72,7 +61,7 @@
             <div class="col">
                 <button class="w-100 btn btn-secondary btn-lg"
                         onclick="location.href='item.html'"
-                        th:onclick="|location.href='/posts/' + ${post.getId()} + '/edit|'|"
+                        th:onclick="|location.href='@{/post/{postID}/(postID=${post.id})}'|"
                         type="button">취소</button>
             </div>
         </div>
