@@ -8,6 +8,9 @@
         .container {
             max-width: 560px;
         }
+        .my-textarea {
+            height: 250px;
+        }
     </style>
 </head>
 <body>
@@ -31,7 +34,7 @@
     </div>
     <div>
         <label for="2">내용</label>
-        <input type="text" id="2"  class="form-control"  th:value="${post.getContent()}" readonly>
+        <input type="text" id="2"  class="form-control my-textarea"  th:value="${post.getContent()}" readonly>
     </div>
     <div>
         <label for="3">좋아요</label>

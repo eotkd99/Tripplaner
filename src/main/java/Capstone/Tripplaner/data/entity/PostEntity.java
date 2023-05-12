@@ -36,6 +36,7 @@ import java.time.LocalDateTime;
     @Column(name = "views")
     private Integer views;
 
+    @PreUpdate
     @PrePersist
     public void prePersist() {
         this.created=LocalDateTime.now();
