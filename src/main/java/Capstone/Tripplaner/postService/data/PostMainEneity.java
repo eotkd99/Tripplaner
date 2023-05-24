@@ -1,4 +1,4 @@
-package Capstone.Tripplaner.data.entity;
+package Capstone.Tripplaner.postService.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "mainImgEntity")
-public class MainImgEntity {
+public class PostMainEneity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

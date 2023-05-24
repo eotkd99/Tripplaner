@@ -1,4 +1,4 @@
-package Capstone.Tripplaner.data.dto;
+package Capstone.Tripplaner.loginService.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,8 +10,12 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
+
+    private Integer id;
     @NotBlank
-    private String id;
+    private String username;
     @NotBlank
     private String password;
+
+    private String role;
 }

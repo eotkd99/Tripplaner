@@ -1,6 +1,9 @@
-package Capstone.Tripplaner.data.entity;
+package Capstone.Tripplaner.postService.data;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package Capstone.Tripplaner.data.dto.form;
+package Capstone.Tripplaner.postService.data;
 
 import lombok.Data;
 

@@ -1,8 +1,8 @@
-package Capstone.Tripplaner.service;
+package Capstone.Tripplaner.loginService.service;
 
-import Capstone.Tripplaner.data.dto.User;
-import Capstone.Tripplaner.data.entity.UserEntity;
-import Capstone.Tripplaner.data.repository.UserRepository;
+import Capstone.Tripplaner.loginService.data.User;
+import Capstone.Tripplaner.loginService.data.UserEntity;
+import Capstone.Tripplaner.loginService.data.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class UserService {
     }
 
     public User login(String id, String password) {
-        UserEntity userEntity = userRepository.findById(id)
+        UserEntity userEntity = userRepository.findByUsername(id)
                 .filter(m -> m.getPassword().equals(password))
                 .orElse(null);
         if(userEntity==null) return null;
@@ -35,7 +35,7 @@ public class UserService {
     }
 
     public void deleteUser(String id) {
-        userRepository.deleteById(id);
+        userRepository.deleteByUsername(id);
     }
 
 }

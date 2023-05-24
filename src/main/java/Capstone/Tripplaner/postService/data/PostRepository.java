@@ -1,6 +1,5 @@
-package Capstone.Tripplaner.data.repository;
+package Capstone.Tripplaner.postService.data;
 
-import Capstone.Tripplaner.data.entity.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

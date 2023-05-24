@@ -1,4 +1,4 @@
-package Capstone.Tripplaner.data.dto;
+package Capstone.Tripplaner.postService.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

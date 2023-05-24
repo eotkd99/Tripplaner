@@ -1,8 +1,8 @@
-package Capstone.Tripplaner.service;
+package Capstone.Tripplaner.postService.service;
 
-import Capstone.Tripplaner.data.dto.Post;
-import Capstone.Tripplaner.data.entity.PostEntity;
-import Capstone.Tripplaner.data.repository.PostRepository;
+import Capstone.Tripplaner.postService.data.Post;
+import Capstone.Tripplaner.postService.data.PostEntity;
+import Capstone.Tripplaner.postService.data.PostRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

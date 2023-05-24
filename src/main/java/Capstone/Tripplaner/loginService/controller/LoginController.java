@@ -1,13 +1,14 @@
-package Capstone.Tripplaner.controller;
+package Capstone.Tripplaner.loginService.controller;
 
-import Capstone.Tripplaner.data.dto.User;
-import Capstone.Tripplaner.service.UserService;
+import Capstone.Tripplaner.loginService.data.User;
+import Capstone.Tripplaner.loginService.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,15 +33,12 @@ public class LoginController {
         return "login/loginForm";
     }
 
-
-    @PostMapping("/login")
-    public String login(@Validated @ModelAttribute("user") User user, BindingResult bindingResult,
-                        @RequestParam(defaultValue = "/") String redirectURL,
-                        HttpServletRequest request) {
+    @PostMapping("/custom-login")
+    public String login(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
-            return "login/loginForm";
+                return "login/loginForm";
         }
-        if (userService.login(user.getId(), user.getPassword()) == null) {
+        if (userService.login(user.getUsername(), user.getPassword()) == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
             return "login/loginForm";
         }
@@ -48,7 +46,6 @@ public class LoginController {
         session.setAttribute("user", user);
         return "main/index";
     }
-
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);

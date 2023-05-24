@@ -1,9 +1,9 @@
-package Capstone.Tripplaner.controller;
+package Capstone.Tripplaner.postService.controller;
 
-import Capstone.Tripplaner.data.dto.Post;
-import Capstone.Tripplaner.data.dto.User;
-import Capstone.Tripplaner.data.dto.form.PostForm;
-import Capstone.Tripplaner.service.PostService;
+import Capstone.Tripplaner.loginService.data.User;
+import Capstone.Tripplaner.postService.data.Post;
+import Capstone.Tripplaner.postService.data.PostForm;
+import Capstone.Tripplaner.postService.service.PostService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,7 +65,7 @@ public class PostController {
         Post post = new Post();
         post.setTitle(form.getTitle());
         post.setContent(form.getContent());
-        post.setUserID(user.getId());
+        post.setUserID(user.getUsername());
         Integer postId = postService.savePost(post);
         redirectAttributes.addAttribute("postId", postId);
         return "redirect:/post/{postId}";
