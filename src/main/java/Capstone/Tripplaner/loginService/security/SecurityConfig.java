@@ -55,10 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers()
                 .xssProtection()
                 .block(true)
-             .and()
-                .frameOptions()
-                .sameOrigin()
-                .contentSecurityPolicy("script-src 'self'; frame-ancestors 'self'")
              .and().and()
                 .csrf().disable();
     }

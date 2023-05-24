@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,18 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     UserService userService;
+    @RequestMapping("/404")
+    public String accessDenied404() {
+        return "security/404Denied";
+    }
+    @RequestMapping("/500")
+    public String accessDenied505() {
+        return "security/500Denied";
+    }
+    @RequestMapping("/403")
+    public String accessDenied403() {
+        return "security/403Denied";
+    }
 
     public LoginController(UserService userService) {
         this.userService = userService;

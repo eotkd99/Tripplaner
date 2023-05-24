@@ -47,6 +47,9 @@
                         </g>
                     </svg></a>
                     </li>
+                    <li th:if="${user.username == 'admin'}" class="nav-item">
+                        <a th:href="@{/admin}" class="nav-link p-2 pb-3 ps-2 pe-2 pt-3"> [관리자]</a>
+                    </li>
                 </ul>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown-3" aria-controls="navbarNavDropdown-3" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
                 </button>
@@ -88,7 +91,7 @@
                             <div class="position-relative text-dark">
                                 <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDN8fGphcGFufGVufDB8fHx8MTY4NDc0MTIyNHww&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_1">
                                 <div class="bottom-0 end-0  pb-5 pe-4 position-absolute ps-4 start-0">
-                                    <h2 class="h5 mb-3">Womens New Arrival</h2><a href="#" class="link-secondary small stretched-link text-decoration-none"></a><a href="file:///C:/Users/user/Desktop/%EC%83%88%20%ED%8F%B4%EB%8D%94/index.html?pgedit=1&amp;pgpvid=1#" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a>
+                                    <h2 style="color: #f0f0f0;font-size: 25px"  class="h5 mb-3">일본 여행</h2><a href="#" class="link-secondary small stretched-link text-decoration-none"></a><a href="" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a>
                                 </div>                                 
                             </div>
                         </div>
@@ -96,16 +99,16 @@
                             <div class="position-relative text-dark"> 
                                 <img src="https://images.unsplash.com/photo-1422464804701-7d8356b3a42f?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDV8fHVzYXxlbnwwfHx8fDE2ODQ3NDM5MTd8MA&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_2">
                                 <div class="bottom-0 end-0  pb-5 pe-4 position-absolute ps-4 start-0">
-                                    <h2 class="h5 mb-3">Womens New Arrival</h2><a href="#" class="link-secondary small stretched-link text-decoration-none"><a href="file:///C:/Users/user/Desktop/%EC%83%88%20%ED%8F%B4%EB%8D%94/index.html?pgedit=1&amp;pgpvid=1#" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a></a>
-                                </div>                                 
+                                    <h2 style="color: #f0f0f0;font-size: 25px"   class="h5 mb-3">미국 여행</h2><a href="#" class="link-secondary small stretched-link text-decoration-none"><a href="" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a></a>
+                                </div>
                             </div>                             
                         </div>
                         <div class="col-lg-4 col-md-6 py-3"> 
                             <div class="position-relative text-dark"> 
                                 <img src="https://images.unsplash.com/photo-1513415564515-763d91423bdd?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDF8fGFzaWF8ZW58MHx8fHwxNjg0NzQzOTkxfDA&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_3">
                                 <div class="bottom-0 end-0  pb-5 pe-4 position-absolute ps-4 start-0">
-                                    <h2 class="h5 mb-3">Womens New Arrival</h2>
-                                </div>                                 
+                                    <h2 style="color: #f0f0f0;font-size: 25px"   class="h5 mb-3">동남아 여행</h2><a href="#" class="link-secondary small stretched-link text-decoration-none"><a href="" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a></a>
+                                </div>
                             </div>                             
                         </div>                         
                     </div>                     
@@ -143,84 +146,25 @@
                 </div>
             </div>
             <section id="item_container">
-                <div class="container"> 
-                    <div class="justify-content-center row"> 
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1598403031688-e7cfd2c222c4?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDM2NXx8dCUyMHNoaXJ0fGVufDB8fHw&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_1"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
-                                <div class="">
-                                    <s class="me-2">$ 95</s>
-                                    <span class="h6 text-danger">$ 75</span>
-                                </div>                                 
-                            </div>                             
-                        </div>                         
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1589747297079-6ab76138dcab?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDJ8fHQtc2hpcnR8ZW58MHx8fA&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_2"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
+                <div class="container">
+                    <div class="justify-content-center row">
+                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3" th:each="item : ${items}">
+                            <div>
+                                <a href="#" class="d-block mb-3">
+                                    <img th:src="${item.imageUrl}" class="img-fluid w-100" th:alt="Product image" th:width="500" th:height="700">
+                                </a>
+                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none" th:text="${item.country}"></a>
+                                <a href="#" class="link-dark text-decoration-none">
+                                    <h3 class="h6" th:text="${item.title}"></h3>
+                                </a>
                                 <div>
-                                    <span class="me-2">$ 100</span>
-                                </div>                                 
-                            </div>                             
-                        </div>                         
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1554526735-356bb52de232?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDIxfHx0LXNoaXJ0fGVufDB8fHw&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_3"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
-                                <div>
-                                    <span class="me-2">$ 95</span>
-                                </div>                                 
-                            </div>                             
+                                    <s class="me-2" th:text="'$ ' + ${item.originalPrice}"></s>
+                                    <span class="h6 text-danger" th:text="'$ ' + ${item.salePrice}"></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDM0OXx8dC1zaGlydHxlbnwwfHx8&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_4"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
-                                <div>
-                                    <span class="me-2">$ 75</span>
-                                </div>                                 
-                            </div>                             
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1605295982505-556d4026a930?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDg4fHx0LXNoaXJ0fGVufDB8fHw&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_5"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
-                                <div>
-                                    <span class="me-2">$ 115</span>
-                                </div>                                 
-                            </div>                             
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1604908695926-17ee04a3c54f?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDE4M3x8dC1zaGlydHxlbnwwfHx8&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_6"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
-                                <div>
-                                    <s class="me-2">$ 125</s>
-                                    <span class="h6 text-danger">$ 100</span>
-                                </div>                                 
-                            </div>                             
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1554971052-d465be00ca02?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDIyNHx8dC1zaGlydHxlbnwwfHx8&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_7"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
-                                <div>
-                                    <span class="me-2">$ 95</span>
-                                </div>                                 
-                            </div>                             
-                        </div>
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3"> 
-                            <div> <a href="#" class="d-block mb-3"><img src="https://images.unsplash.com/photo-1600823722907-43f78d7ba93f?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDIyOHx8dC1zaGlydHxlbnwwfHx8&ixlib=rb-1.2.1q=85&fm=jpg&crop=faces&cs=srgb&w=500&h=700&fit=crop" class="img-fluid w-100" alt="Product image" width="500" height="700" id="item_image_8"></a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none">Armani</a>
-                                <a href="#" class="link-dark text-decoration-none"><h3 class="h6">Borgonuovo T-shirt in viscose jersey</h3></a>
-                                <div>
-                                    <span class="me-2">$ 100</span>
-                                </div>                                 
-                            </div>                             
-                        </div>                         
-                    </div>                     
-                </div>                 
+                    </div>
+                </div>
             </section>
             <section>
                 <div class="container"> 
