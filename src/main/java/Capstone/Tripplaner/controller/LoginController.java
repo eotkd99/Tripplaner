@@ -22,15 +22,9 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String home(@ModelAttribute("user") User user) {
-        return "home";
-    }
-
-    @GetMapping("/loginHome")
-    public String loginHome(@SessionAttribute("user") User user, Model model) {
-        model.addAttribute("user", user);
-        return "loginHome";
+        return "main/index";
     }
 
     @GetMapping("/login")
@@ -38,10 +32,6 @@ public class LoginController {
         return "login/loginForm";
     }
 
-    @GetMapping("/")
-    public String redirectToHome() {
-        return "redirect:/home";
-    }
 
     @PostMapping("/login")
     public String login(@Validated @ModelAttribute("user") User user, BindingResult bindingResult,
@@ -56,10 +46,10 @@ public class LoginController {
         }
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        return "loginHome";
+        return "main/index";
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
