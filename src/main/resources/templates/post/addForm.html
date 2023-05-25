@@ -35,7 +35,7 @@
             <label for="1">제목</label>
             <input type="text" id="1" th:field="*{title}"
                    th:errorclass="field-error" class="form-control" placeholder="제목을 입력하세요">
-            <div class="field-error my-textarea" th:errors="*{title}">제목 오류</div>
+            <div class="field-error" th:errors="*{title}">제목 오류</div>
         </div>
         <div>
             <label for="2">내용</label>

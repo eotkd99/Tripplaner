@@ -2,7 +2,6 @@ package Capstone.Tripplaner.ItemService.controller;
 
 import Capstone.Tripplaner.ItemService.data.dto.Item;
 import Capstone.Tripplaner.ItemService.data.entity.ItemEntity;
-import Capstone.Tripplaner.ItemService.data.entity.ItemImgEntity;
 import Capstone.Tripplaner.ItemService.service.ItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 @Slf4j
@@ -67,17 +64,9 @@ public class ItemController {
     @GetMapping("/item/{id}")
     public String getItem(@PathVariable("id") Long id, Model model) {
         ItemEntity itemEntity = itemService.getItemById(id);
-
-        List<ItemImgEntity> imgList = itemEntity.getImgList();
-
-        List<String> decodedImgList = new ArrayList<>();
-        for (ItemImgEntity img : imgList) {
-            String base64Data = Base64.getEncoder().encodeToString(img.getImg());
-            decodedImgList.add(base64Data);
-        }
-
+        List<String> imgList = itemService.ImgProcess(itemEntity.getImgList());
         model.addAttribute("item", itemEntity);
-        model.addAttribute("imgList", decodedImgList);
+        model.addAttribute("imgList", imgList);
         return "item/item";
     }
 

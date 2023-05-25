@@ -34,7 +34,7 @@
             <label for="1">제목</label>
             <input type="text" id="1" th:field="*{title}"
                    th:errorclass="field-error" class="form-control" placeholder="제목을 입력하세요">
-            <div class="field-error my-textarea" th:errors="*{title}">제목 오류</div>
+            <div class="field-error" th:errors="*{title}">제목 오류</div>
         </div>
         <div>
             <label for="2">내용</label>
@@ -42,7 +42,12 @@
                       th:errorclass="field-error" class="form-control my-textarea" placeholder="내용을 입력하세요"></textarea>
             <div class="field-error" th:errors="*{content}">내용 오류</div>
         </div>
-
+        <div>
+            <label for="3">가격</label>
+            <textarea id="3" th:field="*{price}"
+                      th:errorclass="field-error" class="form-control" placeholder="내용을 입력하세요"></textarea>
+            <div class="field-error" th:errors="*{price}">내용 오류</div>
+        </div>
         <div>
             <label for="images">사진 첨부</label>
             <input type="file" id="images" name="images" multiple>

@@ -1,9 +1,13 @@
 package Capstone.Tripplaner.loginService.controller;
 
+import Capstone.Tripplaner.ItemService.data.dto.ItemOneImage;
+import Capstone.Tripplaner.ItemService.data.entity.ItemEntity;
+import Capstone.Tripplaner.ItemService.service.ItemService;
 import Capstone.Tripplaner.loginService.data.User;
 import Capstone.Tripplaner.loginService.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @Slf4j
 public class LoginController {
 
     UserService userService;
+    ItemService itemService;
     @RequestMapping("/404")
     public String accessDenied404() {
         return "security/404Denied";
@@ -32,12 +38,18 @@ public class LoginController {
         return "security/403Denied";
     }
 
-    public LoginController(UserService userService) {
+    public LoginController(UserService userService, ItemService itemService) {
         this.userService = userService;
+        this.itemService = itemService;
     }
 
     @GetMapping("/")
-    public String home(@ModelAttribute("user") User user) {
+    public String home(@ModelAttribute("user") User user, Model model) {
+        List<ItemEntity> DLSLikeList = itemService.descLikeSort();
+        List<ItemEntity> DLSViewList = itemService.descViewSort();
+        List<ItemOneImage> a = itemService.processItemImgList(DLSLikeList);
+        model.addAttribute("DLSLikeListImg", itemService.processItemImgList(DLSLikeList));
+        model.addAttribute("DLSViewListImg", itemService.processItemImgList(DLSViewList));
         return "main/index";
     }
 
@@ -57,7 +69,7 @@ public class LoginController {
         }
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
-        return "main/index";
+        return "redirect:/";
     }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {

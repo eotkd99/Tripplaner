@@ -21,6 +21,9 @@ public class ItemEntity {
     private Long id;
     private String title;
     private String content;
+    private Integer views;
+    private Integer likes;
+    private Integer price;
 
     @OneToMany(mappedBy = "itemEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemImgEntity> imgList = new ArrayList<>();
@@ -33,5 +36,11 @@ public class ItemEntity {
     public void removeImage(ItemImgEntity imgEntity) {
         imgList.remove(imgEntity);
         imgEntity.setItemEntity(null);
+    }
+    @PreUpdate
+    @PrePersist
+    public void prePersist() {
+        this.likes=0;
+        this.views=0;
     }
 }

@@ -3,13 +3,14 @@ package Capstone.Tripplaner.ItemService.service;
 
 import Capstone.Tripplaner.ItemService.data.ItemRepository;
 import Capstone.Tripplaner.ItemService.data.dto.Item;
+import Capstone.Tripplaner.ItemService.data.dto.ItemOneImage;
 import Capstone.Tripplaner.ItemService.data.entity.ItemEntity;
 import Capstone.Tripplaner.ItemService.data.entity.ItemImgEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ItemService {
@@ -46,6 +47,7 @@ public class ItemService {
     private ItemEntity duplicate(ItemEntity itemEntity, Item item){
         itemEntity.setTitle(item.getTitle());
         itemEntity.setContent(item.getContent());
+        itemEntity.setPrice(item.getPrice());
         for (MultipartFile image : item.getImages()) {
             if (!image.isEmpty()) {
                 try {
@@ -58,5 +60,36 @@ public class ItemService {
             }
         }
         return itemEntity;
+    }
+
+    public List<ItemEntity> descLikeSort(){
+        List<ItemEntity> entities = getAllItems();
+        Collections.sort(entities, Comparator.comparing(ItemEntity::getLikes).reversed());
+        return entities;
+    }
+    public List<ItemEntity> descViewSort(){
+        List<ItemEntity> entities = getAllItems();
+        Collections.sort(entities, Comparator.comparing(ItemEntity::getViews).reversed());
+        return entities;
+    }
+    public List<String> ImgProcess(List<ItemImgEntity> imgList){
+        List<String> decodedImgList = new ArrayList<>();
+        for (ItemImgEntity img : imgList) {
+            String base64Data = Base64.getEncoder().encodeToString(img.getImg());
+            decodedImgList.add(base64Data);
+        }
+        return decodedImgList;
+    }
+    public List<ItemOneImage> processItemImgList(List<ItemEntity> itemList) {
+        List<ItemOneImage> itemOneImages = new ArrayList<>();
+        for (ItemEntity entity : itemList) {
+            itemOneImages.add(new ItemOneImage(
+                    entity.getTitle(),
+                    entity.getContent(),
+                    entity.getPrice(),
+                    Base64.getEncoder().encodeToString(entity.getImgList().get(0).getImg())
+            ));
+        }
+        return itemOneImages;
     }
 }

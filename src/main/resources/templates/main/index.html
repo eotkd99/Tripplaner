@@ -148,18 +148,18 @@
             <section id="item_container">
                 <div class="container">
                     <div class="justify-content-center row">
-                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3" th:each="item : ${items}">
+                        <div class="col-6 col-lg-3 col-md-4 pb-3 pt-3" th:each="item : ${DLSLikeListImg}">
                             <div>
                                 <a href="#" class="d-block mb-3">
-                                    <img th:src="${item.imageUrl}" class="img-fluid w-100" th:alt="Product image" th:width="500" th:height="700">
+                                    <img th:src="@{|data:image/jpeg;base64,${item.getImage()}|}" class="img-fluid w-100" alt="Product image" width="500" height="700">
                                 </a>
-                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none" th:text="${item.country}"></a>
+                                <a href="#" class="d-inline-block link-secondary mb-2 small text-decoration-none" th:text="${item.title}"></a>
                                 <a href="#" class="link-dark text-decoration-none">
-                                    <h3 class="h6" th:text="${item.title}"></h3>
+                                    <h3 class="h6" th:text="${item.content}"></h3>
                                 </a>
                                 <div>
-                                    <s class="me-2" th:text="'$ ' + ${item.originalPrice}"></s>
-                                    <span class="h6 text-danger" th:text="'$ ' + ${item.salePrice}"></span>
+                                    <s class="me-2" th:text="'$ ' + ${item.price*1.5}"></s>
+                                    <span class="h6 text-danger" th:text="'$ ' + ${item.price}"></span>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +169,7 @@
             <section>
                 <div class="container"> 
                     <div class="justify-content-center row"> 
-</div>                     
+                    </div>
                 </div>                 
             </section>
             <section class="pb-5 pt-5 text-center">
