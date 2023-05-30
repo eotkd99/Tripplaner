@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
              .authorizeRequests()
                 .antMatchers("/css/**", "/login_fail","/loginSuccess","/index").permitAll()
-                .antMatchers("/admin_menu").hasAuthority("ADMIN")
+                .antMatchers("/addItem").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
              .and()
                 .formLogin()
