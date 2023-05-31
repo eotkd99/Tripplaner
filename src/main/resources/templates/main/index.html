@@ -35,7 +35,7 @@
 
 
                     <li th:if="${#session.getAttribute('user')}" class="nav-item">
-                        <p class="nav-link p-2 pb-3 ps-2 pe-2 pt-3" th:text="|환영합니다 *{user.username} 님!|"></p>
+                        <p class="nav-link p-2 pb-3 ps-2 pe-2 pt-3" th:text="|환영합니다 *{session.user.username} 님!|"></p>
                     </li>
                     <li th:if="${#session.getAttribute('user')}" class="nav-item">
                         <a th:href="@{/logout}" class="nav-link p-2 pb-3 ps-2 pe-2 pt-3"> 로그아웃</a>
@@ -48,7 +48,7 @@
                     </svg></a>
                     </li>
                     <li th:if="${user.username == 'admin'}" class="nav-item">
-                        <a th:href="@{/admin}" class="nav-link p-2 pb-3 ps-2 pe-2 pt-3"> [관리자]</a>
+                        <a th:href="@{/itemList}" class="nav-link p-2 pb-3 ps-2 pe-2 pt-3"> [관리자]</a>
                     </li>
                 </ul>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown-3" aria-controls="navbarNavDropdown-3" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> 
@@ -89,25 +89,25 @@
                     <div class="justify-content-center row"> 
                         <div class="col-lg-4 col-md-6 py-3">
                             <div class="position-relative text-dark">
-                                <img href="/item/japan" src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDN8fGphcGFufGVufDB8fHx8MTY4NDc0MTIyNHww&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_1">
+                                <img href="/itemJapan" src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDN8fGphcGFufGVufDB8fHx8MTY4NDc0MTIyNHww&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_1">
                                 <div class="bottom-0 end-0  pb-5 pe-4 position-absolute ps-4 start-0">
-                                    <h2 style="color: #f0f0f0;font-size: 25px"  class="h5 mb-3">일본 여행</h2><a href="/item/japan" class="link-secondary small stretched-link text-decoration-none"></a><a href="/item/japan" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a>
+                                    <h2 style="color: #f0f0f0;font-size: 25px"  class="h5 mb-3">일본 여행</h2><a href="/itemJapan" class="link-secondary small stretched-link text-decoration-none"></a><a href="/item/japan" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a>
                                 </div>                                 
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 py-3"> 
                             <div class="position-relative text-dark"> 
-                                <img href="/item/america" src="https://images.unsplash.com/photo-1422464804701-7d8356b3a42f?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDV8fHVzYXxlbnwwfHx8fDE2ODQ3NDM5MTd8MA&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_2">
+                                <img href="/itemAmerica" src="https://images.unsplash.com/photo-1422464804701-7d8356b3a42f?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDV8fHVzYXxlbnwwfHx8fDE2ODQ3NDM5MTd8MA&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_2">
                                 <div class="bottom-0 end-0  pb-5 pe-4 position-absolute ps-4 start-0">
-                                    <h2 style="color: #f0f0f0;font-size: 25px"   class="h5 mb-3">미국 여행</h2><a href="/item/america" class="link-secondary small stretched-link text-decoration-none"><a href="/item/america" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a></a>
+                                    <h2 style="color: #f0f0f0;font-size: 25px"   class="h5 mb-3">미국 여행</h2><a href="/itemAmerica" class="link-secondary small stretched-link text-decoration-none"><a href="/item/america" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a></a>
                                 </div>
                             </div>                             
                         </div>
                         <div class="col-lg-4 col-md-6 py-3"> 
                             <div class="position-relative text-dark"> 
-                                <img href="/item/southeast" src="https://images.unsplash.com/photo-1513415564515-763d91423bdd?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDF8fGFzaWF8ZW58MHx8fHwxNjg0NzQzOTkxfDA&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_3">
+                                <img href="/itemSoutheast" src="https://images.unsplash.com/photo-1513415564515-763d91423bdd?ixid=M3wyMDkyMnwwfDF8c2VhcmNofDF8fGFzaWF8ZW58MHx8fHwxNjg0NzQzOTkxfDA&ixlib=rb-4.0.3q=85&fm=jpg&crop=faces&cs=srgb&w=280&h=200&fit=crop" class="img-fluid w-100" alt="Product image" width="280" height="200" id="image_1_3">
                                 <div class="bottom-0 end-0  pb-5 pe-4 position-absolute ps-4 start-0">
-                                    <h2 style="color: #f0f0f0;font-size: 25px"   class="h5 mb-3">동남아 여행</h2><a href="/item/southeast" class="link-secondary small stretched-link text-decoration-none"><a href="/item/southeast" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a></a>
+                                    <h2 style="color: #f0f0f0;font-size: 25px"   class="h5 mb-3">동남아 여행</h2><a href="/itemSoutheast" class="link-secondary small stretched-link text-decoration-none"><a href="/item/southeast" spellcheck="false" data-medium-editor-element="true" role="textbox" aria-multiline="true" data-medium-editor-editor-index="13" medium-editor-index="da6e8719-d7d9-463e-d73f-a243e13afb93" data-placeholder="Type your text" data-medium-focused="true">View details</a></a>
                                 </div>
                             </div>                             
                         </div>                         

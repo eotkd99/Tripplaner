@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Slf4j
 @Controller
 public class ItemCountryController {
-    /*화면 출력*/
-    @GetMapping
-    public String returnJapan(Model model){
+
+    @GetMapping("/itemJapan")
+    public String japanItem(Model model){
         model.addAttribute("itemList",new Item());
-        return "item/japan";
+        return "ItemCountry/japan";
+    }
+    /*@GetMapping
+    public String japanAmerica(Model model){
+        model.addAttribute("itemList",new Item());
+        return "ItemCountry/america";
     }
     @GetMapping
-    public String returnAmerica(Model model){
+    public String japanSouthwest(Model model){
         model.addAttribute("itemList",new Item());
-        return "item/america";
-    }
-    @GetMapping
-    public String returnSouthWest(Model model){
-        model.addAttribute("itemList",new Item());
-        return "item/southwest";
-    }
-    /*아이템 추가*/
-    @PostMapping
+        return "ItemCountry/southwest";
+    }*/
+
+    /*@PostMapping
     public String addJapan(){
 
         return "redirect:/";
@@ -41,5 +41,5 @@ public class ItemCountryController {
     public String addSouthWest(){
 
         return "redirect:/";
-    }
+    }*/
 }
