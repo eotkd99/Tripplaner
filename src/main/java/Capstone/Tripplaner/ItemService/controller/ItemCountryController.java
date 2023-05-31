@@ -15,7 +15,7 @@ public class ItemCountryController {
     @GetMapping("/itemJapan")
     public String japanItem(Model model){
         model.addAttribute("itemList",new Item());
-        return "ItemCountry/japan";
+        return "main/japan";
     }
     /*@GetMapping
     public String japanAmerica(Model model){

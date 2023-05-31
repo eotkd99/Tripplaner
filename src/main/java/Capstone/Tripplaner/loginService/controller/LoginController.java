@@ -6,17 +6,18 @@ import Capstone.Tripplaner.ItemService.service.ItemService;
 import Capstone.Tripplaner.loginService.data.User;
 import Capstone.Tripplaner.loginService.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -44,19 +45,42 @@ public class LoginController {
     }
 
     @GetMapping("/")
-    public String home(@ModelAttribute("user") User user, Model model) {
+    public String home(@SessionAttribute("user") User user, Model model) {
         List<ItemEntity> DLSLikeList = itemService.descLikeSort();
         List<ItemEntity> DLSViewList = itemService.descViewSort();
-        List<ItemOneImage> a = itemService.processItemImgList(DLSLikeList);
         model.addAttribute("DLSLikeListImg", itemService.processItemImgList(DLSLikeList));
         model.addAttribute("DLSViewListImg", itemService.processItemImgList(DLSViewList));
+        model.addAttribute("user", user);
         return "main/index";
     }
+
 
     @GetMapping("/login")
     public String loginForm(@ModelAttribute("user") User user) {
         return "login/loginForm";
     }
+
+
+    @GetMapping("/info")
+    public String getUserInfo(Principal principal, HttpServletRequest request) {
+        if (principal instanceof OAuth2AuthenticationToken) {
+            OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) principal;
+            OAuth2User oauthUser = oauthToken.getPrincipal();
+
+            String username = oauthUser.getAttribute("name");
+
+            HttpSession session = request.getSession();
+            User user= new User();
+            user.setUsername(username);
+            user.setRole("USER");
+            userService.saveUser(user);
+            session.setAttribute("user", user);
+            return "redirect:/";
+        }
+        return "User Info not available";
+    }
+
+
 
     @PostMapping("/custom-login")
     public String login(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, HttpServletRequest request) {
@@ -77,6 +101,25 @@ public class LoginController {
         if (session != null) {
             session.invalidate();
         }
+        return "redirect:/";
+    }
+
+    @GetMapping("/register")
+    public String registerForm(@ModelAttribute("user") User user) {
+        return "login/addForm";
+    }
+    @PostMapping("/register")
+    public String register(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, HttpServletRequest request) {
+        if (bindingResult.hasErrors()) {
+            return "login/addForm";
+        }
+        if (userService.login(user.getUsername(), user.getPassword()) != null) {
+            bindingResult.reject("loginFail", "이미 존재하는 아이디 입니다.");
+            return "login/addForm";
+        }
+        if(user.getUsername().equals("admin")) user.setRole("ADMIN");
+        else user.setRole("USER");
+        userService.saveUser(user);
         return "redirect:/";
     }
 }
