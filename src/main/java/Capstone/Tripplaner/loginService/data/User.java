@@ -12,9 +12,9 @@ import javax.validation.constraints.NotBlank;
 public class User {
 
     private Integer id;
-    @NotBlank
+    @NotBlank(message="아이디는 공백일 수 없습니다.")
     private String username;
-    @NotBlank
+    @NotBlank(message="비밀번호는 공백일 수 없습니다.")
     private String password;
 
     private String role;

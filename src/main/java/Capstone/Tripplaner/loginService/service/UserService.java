@@ -30,12 +30,4 @@ public class UserService {
         userRepository.save(modelMapper.map(user, UserEntity.class));
     }
 
-    public void updateUser(User user) {
-        userRepository.save(modelMapper.map(user, UserEntity.class));
-    }
-
-    public void deleteUser(String id) {
-        userRepository.deleteByUsername(id);
-    }
-
 }

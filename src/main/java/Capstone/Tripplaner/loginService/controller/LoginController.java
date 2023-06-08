@@ -1,8 +1,5 @@
 package Capstone.Tripplaner.loginService.controller;
 
-import Capstone.Tripplaner.ItemService.data.dto.ItemOneImage;
-import Capstone.Tripplaner.ItemService.data.entity.ItemEntity;
-import Capstone.Tripplaner.ItemService.service.ItemService;
 import Capstone.Tripplaner.loginService.data.User;
 import Capstone.Tripplaner.loginService.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -13,19 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @Slf4j
 public class LoginController {
 
     UserService userService;
-    ItemService itemService;
     @RequestMapping("/404")
     public String accessDenied404() {
         return "security/404Denied";
@@ -39,17 +32,12 @@ public class LoginController {
         return "security/403Denied";
     }
 
-    public LoginController(UserService userService, ItemService itemService) {
+    public LoginController(UserService userService) {
         this.userService = userService;
-        this.itemService = itemService;
     }
 
     @GetMapping("/")
     public String home(@SessionAttribute("user") User user, Model model) {
-        List<ItemEntity> DLSLikeList = itemService.descLikeSort();
-        List<ItemEntity> DLSViewList = itemService.descViewSort();
-        model.addAttribute("DLSLikeListImg", itemService.processItemImgList(DLSLikeList));
-        model.addAttribute("DLSViewListImg", itemService.processItemImgList(DLSViewList));
         model.addAttribute("user", user);
         return "main/index";
     }
@@ -80,8 +68,6 @@ public class LoginController {
         return "User Info not available";
     }
 
-
-
     @PostMapping("/custom-login")
     public String login(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
@@ -98,9 +84,7 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-        if (session != null) {
-            session.invalidate();
-        }
+        if (session != null) {session.invalidate();}
         return "redirect:/";
     }
 
@@ -108,6 +92,7 @@ public class LoginController {
     public String registerForm(@ModelAttribute("user") User user) {
         return "login/addForm";
     }
+
     @PostMapping("/register")
     public String register(@Validated @ModelAttribute("user") User user, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
